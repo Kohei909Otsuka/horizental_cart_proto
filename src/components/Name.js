@@ -1,6 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Formik, Field } from 'formik';
+import { navigate } from 'hookrouter';
+import { NoScroll } from './CommonStyle';
+import { valRequired, valNum } from './Validate';
 
 import {
    Form,
@@ -10,29 +12,6 @@ import {
    NextBtn,
    LabelInputPair,
 } from './FormParts';
-
-const NoScroll = styled.div`
-  overflow: hidden;
-  min-height: 100%
-  padding: 10px;
-`;
-
-const valRequired = value => {
-  let err;
-  if (!value) {
-    err = '必須です';
-  }
-  return err;
-};
-
-const valNum = value => {
-  let err;
-  if (isNaN(value)) {
-    err = '数字のみ';
-  }
-  return err;
-}
-
 
 const Name = () => {
   return (
@@ -47,6 +26,8 @@ const Name = () => {
         }}
         onSubmit={values => {
           console.log('submit values:', values);
+          // find address by zip
+          navigate('/address');
         }}
         render={({
           touched,
@@ -56,13 +37,13 @@ const Name = () => {
           handleBlur,
           handleSubmit,
         }) => (
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <LabelInputPair>
               <Label>姓</Label>
               <Field
                 name="last_name"
                 validate={valRequired}
-                render={({}) => (
+                render={() => (
                   <Input
                     type="text"
                     name="last_name"
@@ -81,7 +62,7 @@ const Name = () => {
               <Field
                 name="first_name"
                 validate={valRequired}
-                render={({}) => (
+                render={() => (
                   <Input
                     type="text"
                     name="first_name"
@@ -99,7 +80,7 @@ const Name = () => {
               <Label>セイ</Label>
               <Field
                 name="last_name_kana"
-                render={({}) => (
+                render={() => (
                   <Input
                     type="text"
                     name="last_name_kana"
@@ -116,7 +97,7 @@ const Name = () => {
               <Label>メイ</Label>
               <Field
                 name="first_name_kana"
-                render={({}) => (
+                render={() => (
                   <Input
                     type="text"
                     name="first_name_kana"
@@ -134,7 +115,7 @@ const Name = () => {
               <Field
                 name="zip"
                 validate={val => valRequired(val) || valNum(val)}
-                render={({}) => (
+                render={() => (
                   <Input
                     type="text"
                     name="zip"
