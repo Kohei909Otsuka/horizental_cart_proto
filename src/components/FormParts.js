@@ -13,9 +13,12 @@ export const Text = styled.span`
   color: ${props => props.color || 'black'};
 `;
 
+// https://qiita.com/skwbr/items/b285cc312587c73a4812
 export const Input = styled.input`
   border-radius: 3px;
   height: 30px;
+  font-size: 18px;
+  background-color: ${props => props.err ? '#e6a4a3' : 'white'}
 `;
 
 export const NextBtn = styled.button`

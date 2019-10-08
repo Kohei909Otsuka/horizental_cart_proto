@@ -7,7 +7,6 @@ import { valRequired, valNum } from './Validate';
 import {
    Form,
    Label,
-   Text,
    Input,
    NextBtn,
    LabelInputPair,
@@ -51,10 +50,10 @@ const Name = () => {
                     placeholder="大塚"
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    err={errors.last_name && touched.last_name}
                   />
                 )}
               />
-              {errors.last_name && touched.last_name &&<Text color="red">{errors.last_name}</Text>}
             </LabelInputPair>
 
             <LabelInputPair>
@@ -70,10 +69,10 @@ const Name = () => {
                     placeholder="康平"
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    err={errors.first_name && touched.first_name}
                   />
                 )}
               />
-              {errors.first_name && touched.first_name &&<Text color="red">{errors.first_name}</Text>}
             </LabelInputPair>
 
             <LabelInputPair>
@@ -123,10 +122,10 @@ const Name = () => {
                     placeholder="1330061"
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    err={errors.zip && touched.zip}
                   />
                 )}
               />
-              {errors.zip && touched.zip && <Text color="red">{errors.zip}</Text>}
             </LabelInputPair>
             <NextBtn type="submit">つぎへ</NextBtn>
           </Form>

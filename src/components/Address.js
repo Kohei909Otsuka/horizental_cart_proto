@@ -7,7 +7,6 @@ import { valRequired } from './Validate';
 import {
    Form,
    Label,
-   Text,
    Input,
    NextBtn,
    LabelInputPair,
@@ -48,10 +47,10 @@ const Address = () => {
                     placeholder="1-1-1"
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    err={errors.address && touched.address}
                   />
                 )}
               />
-              {errors.address && touched.address &&<Text color="red">{errors.address}</Text>}
             </LabelInputPair>
 
             <LabelInputPair>
