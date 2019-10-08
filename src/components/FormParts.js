@@ -9,6 +9,10 @@ export const Form = styled.form`
 export const Label = styled.label`
 `;
 
+export const Text = styled.span`
+  color: ${props => props.color || 'black'};
+`;
+
 export const Input = styled.input`
   border-radius: 3px;
   height: 30px;
